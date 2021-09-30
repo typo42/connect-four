@@ -9,4 +9,5 @@ fun main() {
     val (rows, columns) = dimensions()
     println("$player1 VS $player2")
     println("$rows X $columns board")
+    println(board(rows, columns))
 }
