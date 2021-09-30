@@ -6,7 +6,7 @@ fun game(player1: String, player2: String, board: List<String>, rows: Int, colum
 
     fun updateBoard(player: String, board: List<String>, move: Int): List<String> {
         val boardUpdate = board.toMutableList()
-        loop@ for (row in rows downTo 1) {
+        for (row in rows downTo 1) {
             var line = board[row]
             val left = line.substring(0, move * 2 - 1)
             val right = line.substring(move * 2)
@@ -18,9 +18,9 @@ fun game(player1: String, player2: String, board: List<String>, rows: Int, colum
                 }
                 line = left + position + right
                 boardUpdate[row] = line
-                break@loop
+                break
             } else {
-                continue@loop
+                continue
             }
         }
 
