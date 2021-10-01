@@ -1,23 +1,19 @@
 package connectFour
 
-fun board(rows: Int, columns: Int): List<String> {
-    val board = mutableListOf<String>()
+fun printBoard(board: List<MutableList<String>>) {
+    val rows = board.count()
+    val columns = board[0].count()
     var header = " "
     for (column in 1..columns) header += ("$column ")
-    board.add(header)
+    println(header)
     for (row in 0 until rows) {
-        var line = "║"
-        for (column in 1..columns) line += " ║"
-        board += line
+        val boardLine = "║" + board[row].joinToString("║") + "║"
+        println(boardLine)
     }
-    val last = mutableListOf("╚", "═╝")
-    for (column in 1 until columns) last.add(1, "═╩")
-    board += (last.joinToString(""))
-    return board
+    var bottom = "╚"
+    for (column in 1 until columns) bottom += "═╩"
+    bottom += "═╝"
+    println(bottom)
+
 }
 
-fun printBoard(board: List<String>) {
-    for (row in board) {
-        println(row)
-    }
-}

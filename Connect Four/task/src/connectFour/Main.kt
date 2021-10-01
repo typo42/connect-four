@@ -13,7 +13,7 @@ fun main() {
 //    val player2 = "Ross" // TEST
 //    val rows = 7 // TEST
 //    val columns = 8 // TEST
-    val board = board(rows, columns)
-    for (line in board) println(line)
-    game(player1, player2, board, rows, columns)
+    val board = List(rows) { MutableList(columns) { " " } }
+    printBoard(board)
+    game(player1, player2, board)
 }
