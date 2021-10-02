@@ -4,8 +4,8 @@ data class Stats(
     val player1: Player,
     val player2: Player,
     val gamesTotal: Int = 1,
-    var currentGame: Int = 1,
-    var currentPlayer: Player = player1
+    var currentGame: Int = 0,
+    var currentPlayer: Player = player2
 ) {
 
     fun nextPLayer() {

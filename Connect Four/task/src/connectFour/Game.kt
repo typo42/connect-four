@@ -3,6 +3,7 @@ package connectFour
 import kotlin.system.exitProcess
 
 fun game(board: Board, stats: Stats) {
+    stats.nextRound()
 
     if (stats.gamesTotal > 1) println("Game #${stats.currentGame}")
     board.print()
@@ -10,13 +11,6 @@ fun game(board: Board, stats: Stats) {
     fun endGame() {
         println("Game over!")
         exitProcess(0)
-    }
-
-    fun nextPlayer(player: Player): Player {
-        return when (player) {
-            stats.player1 -> stats.player2
-            else -> stats.player1
-        }
     }
 
     fun printScores() {
@@ -97,9 +91,9 @@ fun game(board: Board, stats: Stats) {
                 if (connectFour(board, stats)) {
                     println("Player ${player.name} won")
                     player.updateScore()
+                    player.updateScore()
                     printScores()
                     if (stats.gamesTotal == 1 || stats.currentGame == stats.gamesTotal) endGame()
-                    stats.nextRound()
                     game(Board(board.rows, board.columns), stats)
                 }
                 break
@@ -112,7 +106,12 @@ fun game(board: Board, stats: Stats) {
     fun turn(board: Board, stats: Stats) {
         if (!board.positions[0].contains(" ")) {
             println("It is a draw")
-            endGame()
+            stats.player1.updateScore()
+            stats.player2.updateScore()
+            stats.nextPLayer()
+            printScores()
+            if (stats.gamesTotal == 1 || stats.currentGame == stats.gamesTotal) endGame()
+            game(Board(board.rows, board.columns), stats)
         }
         println("${stats.currentPlayer.name}'s turn:")
         val turn = readLine()!!
